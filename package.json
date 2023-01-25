@@ -1,5 +1,5 @@
 {
-	"name": "voxeliface",
+	"name": "@voxelified/voxeliface",
 	"type": "module",
 	"main": "src/index.ts",
 	"version": "1.0.0",
@@ -8,15 +8,19 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync"
+		"prepare": "svelte-kit sync",
+		"package": "svelte-package"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^1.0.1",
 		"@sveltejs/kit": "^1.0.0",
+		"@sveltejs/package": "^1.0.2",
 		"sass": "^1.57.1",
-		"svelte": "^3.54.0",
 		"svelte-preprocess": "^5.0.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0"
+	},
+	"dependencies": {
+		"svelte": "^3.54.0"
 	}
 }
