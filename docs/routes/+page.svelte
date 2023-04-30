@@ -7,6 +7,7 @@
 
 <h1>burgers</h1>
 <p>holy bingle. what?! :3</p>
+<p class="sub">i omor</p>
 <div>
 	<Button>Button</Button>
 	<Button disabled>Disabled</Button>
@@ -32,5 +33,8 @@
 <style>
 	.theme-select {
 		margin: 16px 0;
+	}
+	.sub {
+		color: var(--color-secondary);
 	}
 </style>
