@@ -1,9 +1,12 @@
 .theme-color {
 	--color-primary: hsl(var(--theme-hue) 80% 95%);
-	--color-secondary: hsl(var(--theme-hue) 20% 75%);
+	--color-secondary: hsl(var(--theme-hue) 25% 75%);
 
 	--background-header: hsl(var(--theme-hue) 10% 15%);
 	--background-primary: hsl(var(--theme-hue) 10% 40%);
+
+	--border-primary: hsl(var(--theme-hue) 10% 50%);
+	--border-secondary: hsl(var(--theme-hue) 10% 60%);
 
 	--button-color: hsl(var(--theme-hue) 80% 95%);
 	--button-color-active: hsl(var(--theme-hue) 20% 80%);

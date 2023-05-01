@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from 'voxeliface';
+	import { Button, Select } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light', 'color|purple'];
@@ -15,11 +15,15 @@
 
 <p class="theme-select">
 	theme
-	<select bind:value={$theme}>
+	<Select.Root value={theme} placeholder="Select a value">
+		<p>Themes</p>
 		{#each themes as theme}
-			<option value={theme}>{theme}</option>
+			<Select.Item value={theme}>
+				<img src="https://cdn.discordapp.com/attachments/957170483097391124/1102481867405541376/image.png" alt="img" width="16" height="16"/>
+				{theme}
+			</Select.Item>
 		{/each}
-	</select>
+	</Select.Root>
 </p>
 
 <svelte:head>
@@ -30,9 +34,12 @@
 	/>
 </svelte:head>
 
-<style>
+<style lang="scss">
 	.theme-select {
 		margin: 16px 0;
+		img {
+			object-fit: contain;
+		}
 	}
 	.sub {
 		color: var(--color-secondary);
