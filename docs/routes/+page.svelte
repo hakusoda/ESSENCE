@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { Button, Select } from 'voxeliface';
+	import { writable } from 'svelte/store';
+	import { Tabs, Button, Select } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light', 'color|purple'];
+
+	const tabsTest = writable(0);
 </script>
 
 <h1>burgers</h1>
@@ -26,9 +29,22 @@
 	</Select.Root>
 </p>
 
+<Tabs.Root value={tabsTest}>
+	<Tabs.Item value={0} title="ohayō">
+		good morning!
+	</Tabs.Item>
+	<Tabs.Item value={1} title="konbanwa">
+		good evening!
+	</Tabs.Item>
+	<Tabs.Item value={2} title="oyasumi">
+		good night!
+	</Tabs.Item>
+</Tabs.Root>
+
 <div class="bg secondary">
+	burgers
 	<div class="bg primary">
-		holy bingle
+		143 143 143 143 143 143
 	</div>
 </div>
 
@@ -54,6 +70,7 @@
 	.bg {
 		color: var(--color-primary);
 		padding: 16px;
+		margin-top: 16px;
 		&.primary {
 			background: var(--background-primary);
 		}

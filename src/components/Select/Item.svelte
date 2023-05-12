@@ -8,7 +8,7 @@
 	$: selected = $current === value;
 </script>
 
-<button type="button" bind:this={items[value]} class:selected on:click|stopPropagation={() => set(value, items[value].childNodes)}>
+<button type="button" class="focusable" bind:this={items[value]} class:selected on:click|stopPropagation={() => set(value, items[value].childNodes)}>
 	<slot/>
 	{#if selected}
 		<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">

@@ -12,3 +12,19 @@
 	color: var(--color-primary);
 	font-family: var(--font-primary);
 }
+
+.focusable {
+	outline: none;
+	&:focus {
+		animation: 1s infinite alternate basic-focus;
+	}
+}
+
+@keyframes basic-focus {
+	0% {
+		box-shadow: 0 0 0 2px var(--border-tertiary);
+	}
+	100% {
+		box-shadow: 0 0 0 2px var(--border-secondary);
+	}
+}

@@ -48,15 +48,17 @@
 		gap: 32px;
 		color: var(--color-primary);
 		height: 32px;
-		border: 1px solid var(--border-primary);
-		display: inline-flex;
+		border: none;
+		outline: none;
 		padding: 0 16px;
+		display: inline-flex;
 		position: relative;
 		min-width: 192px;
 		font-size: .75em;
 		box-sizing: border-box;
-		transition: border .25s;
+		transition: box-shadow .25s;
 		background: var(--background-primary);
+		box-shadow: 0 0 0 1px var(--border-primary);
 		user-select: none;
 		align-items: center;
 		font-family: var(--font-primary);
@@ -68,7 +70,10 @@
 			align-items: center;
 		}
 		&:hover {
-			border-color: var(--border-secondary);
+			box-shadow: 0 0 0 1px var(--border-secondary);
+		}
+		&:focus {
+			animation: 1s infinite alternate basic-focus;
 		}
 	}
 	.content {

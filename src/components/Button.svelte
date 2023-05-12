@@ -32,6 +32,7 @@
 		'button',
 		`button--size-${size}`,
 		`button--color-${color}`,
+		'focusable',
 		(raised && 'button--raised') as string,
 		(badge && 'has-badge') as string,
 	]);
@@ -69,7 +70,7 @@
 		<slot />
 	</label>
 {:else}
-	<svelte:element this={as} class={className} {disabled} {title} on:click={dispatchClick}>
+	<svelte:element this={as} class={className} {disabled} {title} tabindex="0" on:click={dispatchClick}>
 		<slot/>
 	</svelte:element>
 {/if}
