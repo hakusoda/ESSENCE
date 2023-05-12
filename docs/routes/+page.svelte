@@ -26,6 +26,12 @@
 	</Select.Root>
 </p>
 
+<div class="bg secondary">
+	<div class="bg primary">
+		holy bingle
+	</div>
+</div>
+
 <svelte:head>
 	<title>burgers</title>
 	<meta
@@ -43,5 +49,16 @@
 	}
 	.sub {
 		color: var(--color-secondary);
+	}
+
+	.bg {
+		color: var(--color-primary);
+		padding: 16px;
+		&.primary {
+			background: var(--background-primary);
+		}
+		&.secondary {
+			background: var(--background-secondary);
+		}
 	}
 </style>
