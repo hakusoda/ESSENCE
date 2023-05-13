@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import { Tabs, Button, Select } from 'voxeliface';
+	import { Tabs, Button, Select, DropdownMenu } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light', 'color|purple'];
 
 	const tabsTest = writable(0);
+
+	let dropdownTrigger: () => void;
 </script>
 
 <h1>burgers</h1>
@@ -48,6 +50,16 @@
 	</div>
 </div>
 
+<div class="test">
+	<DropdownMenu bind:trigger={dropdownTrigger}>
+		<Button slot="trigger" on:click={dropdownTrigger}>touchdown!</Button>
+		<p>User Options</p>
+		<a href="/">Your Profile</a>
+		<div class="separator"/>
+		<button>Sign out</button>
+	</DropdownMenu>
+</div>
+
 <svelte:head>
 	<title>burgers</title>
 	<meta
@@ -77,5 +89,8 @@
 		&.secondary {
 			background: var(--background-secondary);
 		}
+	}
+	.test {
+		margin: 50rem 0 50rem auto;
 	}
 </style>

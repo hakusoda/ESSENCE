@@ -2,6 +2,8 @@
 	import { key } from '.';
 	import type { Writable } from 'svelte/store';
 	import { onMount, setContext } from 'svelte';
+
+	import '../../styles/components/menu.scss';
 	let show = false;
 	let inner: any;
 	let items: Record<any, HTMLElement> = {};
@@ -80,27 +82,6 @@
 		top: -9px;
 		left: -13px;
 		width: 100%;
-		border: 1px solid var(--border-primary);
-		display: none;
-		z-index: 1000;
-		padding: 8px 12px;
-		overflow: hidden;
-		position: absolute;
-		animation: show .25s cubic-bezier(0, 0, 0, 1.0);
-		background: var(--background-primary);
-		box-shadow: rgb(22 23 24 / 35%) 0px 0px 20px 4px;
-		border-radius: 8px;
-		:global(p) {
-			color: var(--color-secondary);
-			margin: 0;
-			padding: 0 8px;
-			text-align: start;
-			font-weight: 400;
-			line-height: 24px;
-		}
-		&.show {
-			display: block;
-		}
 	}
 	.cover {
 		top: 0;
@@ -113,17 +94,6 @@
 		background: none;
 		&.show {
 			display: block
-		}
-	}
-
-	@keyframes show {
-		0% {
-			opacity: 0;
-			transform: translateY(16px);
-		}
-		100% {
-			opacity: 1;
-			transform: none;
 		}
 	}
 </style>

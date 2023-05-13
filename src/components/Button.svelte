@@ -70,6 +70,8 @@
 		<slot />
 	</label>
 {:else}
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<svelte:element this={as} class={className} {disabled} {title} tabindex="0" on:click={dispatchClick}>
 		<slot/>
 	</svelte:element>

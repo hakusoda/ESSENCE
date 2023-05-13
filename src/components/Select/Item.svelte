@@ -16,33 +16,3 @@
 		</svg>
 	{/if}
 </button>
-
-<style lang="scss">
-	button {
-		gap: 8px;
-		width: 100%;
-		color: var(--color-primary);
-		height: 32px;
-		border: none;
-		display: flex;
-		padding: 0 8px;
-		background: none;
-		transition: background .25s, box-shadow .25s;
-		user-select: none;
-		font-family: inherit;
-		
-		align-items: center;
-		border-radius: 4px;
-		svg {
-			margin-left: auto;
-		}
-		&:hover {
-			color: var(--button-color);
-			box-shadow: var(--button-shadow);
-			background: var(--button-background);
-		}
-		&.selected {
-			font-weight: 500;
-		}
-	}
-</style>
