@@ -9,15 +9,7 @@
 
 	export let size: 'sm' | 'md' | 'lg' = 'md';
 	export let value = '';
-	export let color:
-		| 'accent'
-		| 'primary'
-		| 'primary-light'
-		| 'secondary'
-		| 'tertiary'
-		| 'danger'
-		| 'danger-light'
-		| 'transparent' = 'accent';
+	export let color: 'accent' = 'accent';
 
 	export let raised = false;
 
@@ -82,12 +74,12 @@
 		gap: 8px;
 		width: fit-content;
 		color: var(--button-color);
+		height: 32px;
 		border: none;
 		cursor: pointer;
-		height: fit-content;
 		outline: 0;
 		display: inline-flex;
-		padding: 6px 12px;
+		padding: 0 12px;
 		position: relative;
 		font-size: 12px;
 		box-shadow: var(--button-shadow);
