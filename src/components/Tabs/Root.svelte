@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { key } from '.';
+	import { setContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import { onMount, setContext } from 'svelte';
 	let items: string[] = [];
 	let buttons: HTMLButtonElement[] = [];
 	let container: HTMLDivElement;

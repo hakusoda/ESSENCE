@@ -20,13 +20,10 @@
 		current: value
 	});
 
-	onMount(() => {
-		inner = items[$value]?.childNodes;
-		console.log(inner);
-	});
+	onMount(() => inner = items[$value]?.childNodes);
 </script>
 
-<button type="button" class="trigger" on:click={() => show = true}>
+<button type="button" class="trigger focusable" on:click={() => show = true}>
 	<div class="item">
 		{#if inner}
 			{#each [...inner].slice(0, inner[inner.length - 1]?.tagName === 'svg' ? -1 : undefined) as element}
@@ -51,15 +48,14 @@
 		color: var(--color-primary);
 		height: 32px;
 		border: none;
-		outline: none;
 		padding: 0 16px;
 		display: inline-flex;
 		position: relative;
 		min-width: 192px;
 		font-size: .75em;
+		background: none;
 		box-sizing: border-box;
 		transition: box-shadow .25s;
-		background: var(--background-primary);
 		box-shadow: 0 0 0 1px var(--border-primary);
 		user-select: none;
 		align-items: center;
@@ -73,9 +69,6 @@
 		}
 		&:hover {
 			box-shadow: 0 0 0 1px var(--border-secondary);
-		}
-		&:focus {
-			animation: 1s infinite alternate basic-focus;
 		}
 	}
 	.content {

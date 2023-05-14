@@ -1,20 +1,23 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import { Tabs, Button, Select, DropdownMenu } from 'voxeliface';
+	import { Tabs, Button, Select, TextInput, DropdownMenu } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light', 'color|purple'];
 
 	const tabsTest = writable(0);
 
+	let inputTest = 'burgers';
 	let dropdownTrigger: () => void;
 </script>
 
-<h1>burgers</h1>
+<h1>{inputTest}</h1>
 <p>holy bingle. what?! :3</p>
 <p class="sub">i omor</p>
+<TextInput bind:value={inputTest} placeholder="burgers"/>
+
 <div>
-	<Button>Button</Button>
+	<Button on:click={() => inputTest = 'burgers'}>Button</Button>
 	<Button disabled>Disabled</Button>
 </div>
 
@@ -44,7 +47,7 @@
 </Tabs.Root>
 
 <div class="bg secondary">
-	burgers
+	{inputTest}
 	<div class="bg primary">
 		143 143 143 143 143 143
 	</div>
@@ -61,10 +64,10 @@
 </div>
 
 <svelte:head>
-	<title>burgers</title>
+	<title>{inputTest}</title>
 	<meta
 		name="description"
-		content="burgers"
+		content={inputTest}
 	/>
 </svelte:head>
 
@@ -77,6 +80,10 @@
 	}
 	.sub {
 		color: var(--color-secondary);
+	}
+
+	:global(.tabs-container) {
+		color: var(--color-tertiary);
 	}
 
 	.bg {
