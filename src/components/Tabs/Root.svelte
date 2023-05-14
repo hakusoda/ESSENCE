@@ -23,7 +23,7 @@
 	}
 </script>
 
-<div class="container" bind:this={container}>
+<div class="tabs-container" bind:this={container}>
 	<div class="buttons">
 		{#each items as title, val}
 			<button type="button" class="focusable" tabindex={val} bind:this={buttons[val]} class:selected={$value === val} on:click={() => value.set(val)}>
@@ -32,13 +32,13 @@
 		{/each}
 		<div class="indicator" bind:this={indicator}/>
 	</div>
-	<div class="content">
+	<div>
 		<slot/>
 	</div>
 </div>
 
 <style lang="scss">
-	.container {
+	.tabs-container {
 		.buttons {
 			height: 36px;
 			display: flex;
