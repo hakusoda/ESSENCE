@@ -15,6 +15,7 @@
 <p>holy bingle. what?! :3</p>
 <p class="sub">i omor</p>
 <TextInput bind:value={inputTest} placeholder="burgers"/>
+<TextInput multiline placeholder="winner!"/>
 
 <div>
 	<Button on:click={() => inputTest = 'burgers'}>Button</Button>
