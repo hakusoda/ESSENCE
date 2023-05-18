@@ -2,7 +2,7 @@
 	"name": "@voxelified/voxeliface",
 	"type": "module",
 	"main": "src/index.ts",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
