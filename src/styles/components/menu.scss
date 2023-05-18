@@ -31,11 +31,13 @@
 		display: flex;
 		outline: none;
 		padding: 0 8px;
+		font-size: inherit;
 		background: none;
 		box-sizing: border-box;
 		transition: background .25s, box-shadow .25s;
-		font-family: inherit;
+		font-weight: 400;
 		align-items: center;
+		font-family: inherit;
 		border-radius: 4px;
 		text-decoration: none;
 		.indicator {
