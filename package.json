@@ -2,7 +2,15 @@
 	"name": "@voxelified/voxeliface",
 	"type": "module",
 	"main": "src/index.ts",
-	"version": "1.4.1",
+	"files": ["dist"],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"version": "1.4.2",
+	"repository": "https://github.com/Excalware/voxeliface.git",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
