@@ -7,6 +7,9 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./styles.scss": {
+			"svelte": "./dist/styles.scss"
 		}
 	},
 	"version": "1.4.2",
