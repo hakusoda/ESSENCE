@@ -12,7 +12,7 @@
 			"svelte": "./dist/styles.scss"
 		}
 	},
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"repository": "https://github.com/Excalware/voxeliface.git",
 	"license": "MIT",
 	"scripts": {
