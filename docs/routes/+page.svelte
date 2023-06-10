@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
 	import { Tabs, Button, Select, TextInput, DropdownMenu } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light', 'color|purple'];
 
-	const tabsTest = writable(0);
-
+	let tabsTest = 0;
 	let inputTest = 'burgers';
 	let dropdownTrigger: () => void;
 </script>
@@ -24,7 +22,7 @@
 
 <p class="theme-select">
 	theme
-	<Select.Root value={theme} placeholder="Select a value">
+	<Select.Root bind:value={$theme} placeholder="Select a value">
 		<p>Themes</p>
 		{#each themes as theme}
 			<Select.Item value={theme}>
@@ -32,10 +30,13 @@
 				{theme}
 			</Select.Item>
 		{/each}
+		<Select.Item value="dark">
+			LONGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+		</Select.Item>
 	</Select.Root>
 </p>
 
-<Tabs.Root value={tabsTest}>
+<Tabs.Root bind:value={tabsTest}>
 	<Tabs.Item value={0} title="ohayō">
 		good morning!
 	</Tabs.Item>

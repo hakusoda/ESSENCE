@@ -1,26 +1,27 @@
 <script lang="ts">
-	import { key } from '.';
-	import type { Writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 	import { onMount, setContext } from 'svelte';
 
 	import '../../styles/components/menu.scss';
+	import { key } from '.';
+	export let value: any;
+	export let placeholder: string;
+
 	let show = false;
 	let inner: any;
 	let items: Record<any, HTMLElement> = {};
-	export let value: Writable<any>;
-	export let placeholder: string;
-
+	const store = writable(value);
 	setContext(key, {
 		set: (newValue: any, html: any) => {
-			value.set(newValue);
+			value = newValue, $store = newValue;
 			inner = html;
 			show = false;
 		},
 		items,
-		current: value
+		current: store
 	});
 
-	onMount(() => inner = items[$value]?.childNodes);
+	onMount(() => inner = items[value]?.childNodes);
 </script>
 
 <button type="button" class="trigger focusable" on:click={() => show = true}>
@@ -74,7 +75,7 @@
 	.content {
 		top: -9px;
 		left: -13px;
-		width: 100%;
+		min-width: 100%;
 	}
 	.cover {
 		top: 0;

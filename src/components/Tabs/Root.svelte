@@ -1,21 +1,26 @@
 <script lang="ts">
-	import { key } from '.';
+	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte';
-	import type { Writable } from 'svelte/store';
+
+	import resize from '../../util/resize';
+	import { key } from '.';
+	export let value: number;
+
+	let _143 = 1;
 	let items: string[] = [];
 	let buttons: HTMLButtonElement[] = [];
 	let container: HTMLDivElement;
-	export let value: Writable<number>;
-
 	let indicator: HTMLDivElement;
+
+	const store = writable(value);
 	setContext(key, {
-		set: (newValue: any) => value.set(newValue),
+		set: (newValue: any) => (value = newValue, $store = newValue),
 		addItem: (value: any, title: string) => items[value] = title,
-		current: value
+		current: store
 	});
 
-	$: if (indicator) {
-		const button = buttons[$value];
+	$: if (indicator && _143) {
+		const button = buttons[$store];
 		if (button) {
 			indicator.style.left = `${button.getBoundingClientRect().left - container.getBoundingClientRect().left}px`;
 			indicator.style.width = `${button.getBoundingClientRect().width}px`;
@@ -24,9 +29,9 @@
 </script>
 
 <div class="tabs-container" bind:this={container}>
-	<div class="buttons">
+	<div class="buttons" use:resize={() => _143++}>
 		{#each items as title, val}
-			<button type="button" class="focusable" tabindex={val} bind:this={buttons[val]} class:selected={$value === val} on:click={() => value.set(val)}>
+			<button type="button" class="focusable" tabindex={val} bind:this={buttons[val]} class:selected={value === val} on:click={() => (value = val, $store = val)}>
 				{title}
 			</button>
 		{/each}
