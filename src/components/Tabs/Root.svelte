@@ -16,6 +16,11 @@
 	setContext(key, {
 		set: (newValue: any) => (value = newValue, $store = newValue),
 		addItem: (value: any, title: string) => items[value] = title,
+		removeItem: (itemValue: any) => {
+			items = items.filter((_,index) => index !== itemValue);
+			if (value === itemValue)
+				value = items.findIndex(() => true);
+		},
 		current: store
 	});
 
@@ -26,6 +31,8 @@
 			indicator.style.width = `${button.getBoundingClientRect().width}px`;
 		}
 	}
+
+	$: value = items[value] === undefined ? items.findIndex(() => true) : value;
 </script>
 
 <div class="tabs-container" bind:this={container}>

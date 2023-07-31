@@ -43,9 +43,11 @@
 	<Tabs.Item value={1} title="konbanwa">
 		good evening!
 	</Tabs.Item>
-	<Tabs.Item value={2} title="oyasumi">
-		good night!
-	</Tabs.Item>
+	{#if !tabsTest}
+		<Tabs.Item value={2} title="oyasumi">
+			good night!
+		</Tabs.Item>
+	{/if}
 </Tabs.Root>
 
 <div class="bg secondary">
