@@ -16,7 +16,7 @@
 <TextInput multiline placeholder="winner!"/>
 
 <div>
-	<Button on:click={() => inputTest = 'burgers'}>Button</Button>
+	<Button on:click={() => $theme = 'dark'}>Button</Button>
 	<Button disabled>Disabled</Button>
 </div>
 

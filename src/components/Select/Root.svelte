@@ -1,5 +1,5 @@
 <script lang="ts">
-import { writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	import { onMount, setContext } from 'svelte';
 
 	import '../../styles/components/menu.scss';
@@ -13,7 +13,7 @@ import { writable } from 'svelte/store';
 	const store = writable(value);
 	setContext(key, {
 		set: (newValue: any, html: any) => {
-			value = newValue, $store = newValue;
+			value = newValue;
 			inner = html;
 			show = false;
 		},
@@ -22,6 +22,8 @@ import { writable } from 'svelte/store';
 	});
 
 	onMount(() => inner = items[value]?.childNodes);
+	
+	$: $store = value, inner = items[value]?.childNodes;
 </script>
 
 <button type="button" class="trigger focusable" on:click={() => show = true}>
