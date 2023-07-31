@@ -38,7 +38,7 @@ import { writable } from 'svelte/store';
 		<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
 	</svg>
 	<button type="button" class="cover" class:show on:click|stopPropagation={() => show = false}/>
-	<div class="content" class:show>
+	<div class="menu-content" class:show>
 		<slot/>
 	</div>
 </button>
@@ -72,7 +72,7 @@ import { writable } from 'svelte/store';
 			box-shadow: 0 0 0 1px var(--border-secondary);
 		}
 	}
-	.content {
+	.menu-content {
 		top: -9px;
 		left: -13px;
 		min-width: 100%;

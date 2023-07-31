@@ -42,12 +42,15 @@
 	<slot name="trigger"/>
 </div>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="backdrop" class:show bind:this={backdrop} on:click={event => {
 	if (event.target === backdrop)
 		show = false;
 }}>
-	<div class="content" class:show bind:this={content} on:click={clickHandler}>
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<div class="menu-content" class:show bind:this={content} on:click={clickHandler}>
 		<slot/>
 		<svg class="arrow" width="10" height="5" viewBox="0 0 30 10" bind:this={arrow}>
 			<polygon points="0,10 30,10 15,0" fill="currentColor"/>
@@ -69,7 +72,7 @@
 		z-index: 1000;
 		position: fixed;
 		visibility: hidden;
-		.content {
+		.menu-content {
 			position: fixed;
 		}
 		&.show {

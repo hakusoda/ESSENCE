@@ -1,7 +1,6 @@
 <script lang="ts">
 	import 'voxeliface/styles.scss';
 	import TextLogo from '../components/TextLogo.svelte';
-	import { Header } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themeHues: Record<string, number> = {
@@ -18,10 +17,10 @@
 </script>
 
 <div class="app theme-{themeName}" use:themeHue={themeColor}>
-	<Header>
+	<header>
 		<TextLogo/>
-	</Header>
-	<main class="app-content">
+	</header>
+	<main class="content">
 		<slot/>
 	</main>
 </div>
@@ -32,10 +31,14 @@
 		height: 100%;
 		overflow: auto;
 		background: var(--background-primary);
-	}
-	.app-content {
-		display: flex;
-		padding: 0 2rem;
-		flex-direction: column;
+		header {
+			padding: 8px 32px;
+			background: var(--background-header);
+		}
+		.content {
+			display: flex;
+			padding: 0 2rem;
+			flex-direction: column;
+		}
 	}
 </style>
