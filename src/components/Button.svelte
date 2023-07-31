@@ -64,6 +64,7 @@
 {:else}
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<svelte:element this={as} class={className} {disabled} {title} tabindex="0" on:click={dispatchClick}>
 		<slot/>
 	</svelte:element>
@@ -88,6 +89,7 @@
 		line-height: 1.43;
 		align-items: center;
 		border-radius: 4px;
+		text-decoration: none;
 		justify-content: center;
 		background-color: var(--color-button-bg);
 
