@@ -2,7 +2,6 @@
 	import { writable } from 'svelte/store';
 	import { onMount, setContext } from 'svelte';
 
-	import '../../styles/components/menu.scss';
 	import { key } from '.';
 	export let value: any;
 	export let placeholder: string;

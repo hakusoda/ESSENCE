@@ -1,0 +1,26 @@
+.text-input {
+	color: var(--color-primary);
+	border: none;
+	display: inline-block;
+	padding: 9px 16px 8px;
+	min-width: 192px;
+	font-size: .75em;
+	min-height: 32px;
+	background: none;
+	box-sizing: border-box;
+	transition: box-shadow .25s;
+	box-shadow: inset 0 0 0 1px var(--border-primary);
+	line-height: 1.25;
+	font-family: var(--font-primary);
+	border-radius: 4px;
+	&:hover {
+		box-shadow: inset 0 0 0 1px var(--border-secondary);
+	}
+	&::placeholder {
+		color: var(--color-secondary);
+	}
+	&[contenteditable]:empty::before {
+		color: var(--color-secondary);
+		content: var(--placeholder);
+	}
+}

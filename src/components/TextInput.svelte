@@ -1,13 +1,18 @@
 <script lang="ts">
+	export let type: 'text' | 'email' | 'number' | 'password' | 'tel' | 'url' = 'text';
 	export let value = '';
 	export let multiline = false;
 	export let placeholder = '';
+	
+	const typeAction = (node: HTMLInputElement) => {
+		node.type = type
+	};
 </script>
 
 {#if multiline}
 	<span class="text-input focusable" role="textbox" contenteditable bind:innerText={value} style={`--placeholder: "${placeholder}";`}/>
 {:else}
-	<input type="text" class="text-input focusable" {placeholder} bind:value/>
+	<input class="text-input focusable" {placeholder} bind:value use:typeAction/>
 {/if}
 
 <style lang="scss">
