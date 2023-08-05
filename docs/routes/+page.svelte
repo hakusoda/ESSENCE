@@ -58,13 +58,40 @@
 </div>
 
 <div class="test">
-	<DropdownMenu bind:trigger={dropdownTrigger}>
+	<DropdownMenu.Root bind:trigger={dropdownTrigger}>
 		<Button slot="trigger" on:click={dropdownTrigger}>touchdown!</Button>
 		<p>User Options</p>
 		<a href="/">Your Profile</a>
 		<div class="separator"/>
+		<DropdownMenu.Sub>
+			<svelte:fragment slot="trigger">
+				More Options...
+			</svelte:fragment>
+			<a href="/">Your Profile</a>
+			<div class="separator"/>
+			<DropdownMenu.Sub>
+				<svelte:fragment slot="trigger">
+					More Options...
+				</svelte:fragment>
+				<a href="/">Your Profile</a>
+				<div class="separator"/>
+				<DropdownMenu.Sub>
+					<svelte:fragment slot="trigger">
+						More Options...
+					</svelte:fragment>
+					<a href="/">Your Profile</a>
+					<div class="separator"/>
+					<button>Sign out</button>
+				</DropdownMenu.Sub>
+				<div class="separator"/>
+				<button>Sign out</button>
+			</DropdownMenu.Sub>
+			<div class="separator"/>
+			<button>Sign out</button>
+		</DropdownMenu.Sub>
+		<div class="separator"/>
 		<button>Sign out</button>
-	</DropdownMenu>
+	</DropdownMenu.Root>
 </div>
 
 <svelte:head>

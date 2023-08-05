@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { clamp } from '../util';
+	import { writable } from 'svelte/store';
+	import { setContext } from 'svelte';
+
+	import { key } from '.';
+	import { clamp } from '../../util';
+
+	const currentItem = writable<HTMLElement | null>(null);
+	setContext(key, currentItem);
 
 	let show = false;
 	export const trigger = () => {
@@ -36,6 +43,13 @@
 				show = false;
 		}
 	};
+	const moveHandler = ({ target }: MouseEvent) => {
+		if (target) {
+			const { nodeName } = target as HTMLElement;
+			if (nodeName === 'BUTTON' || nodeName === 'A')
+				$currentItem = target as HTMLElement;
+		}
+	};
 </script>
 
 <div class="container" bind:this={container}>
@@ -50,7 +64,7 @@
 }}>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="menu-content" class:show bind:this={content} on:click={clickHandler}>
+	<div class="menu-content" class:show bind:this={content} on:click={clickHandler} on:mousemove={moveHandler}>
 		<slot/>
 		<svg class="arrow" width="10" height="5" viewBox="0 0 30 10" bind:this={arrow}>
 			<polygon points="0,10 30,10 15,0" fill="currentColor"/>

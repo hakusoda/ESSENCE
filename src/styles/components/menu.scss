@@ -47,7 +47,7 @@
 		&:focus {
 			animation: 1s infinite alternate basic-focus;
 		}
-		&:hover, &:focus {
+		&:hover, &:focus, &.hover {
 			color: var(--button-color);
 			box-shadow: var(--button-shadow);
 			background: var(--button-background);
@@ -76,6 +76,26 @@
 }
 
 @keyframes show-menu {
+	0% {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes show-menu-left {
+	0% {
+		opacity: 0;
+		transform: translateX(-16px);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes show-menu-right {
 	0% {
 		opacity: 0;
 		transform: translateY(16px);
