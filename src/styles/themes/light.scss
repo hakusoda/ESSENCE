@@ -1,21 +1,22 @@
 .theme-light {
-	--color-primary: hsl(0 0% 20%);
-	--color-secondary: hsl(0 0% 40%);
+	--color-primary: #000;
+	--color-secondary: hsl(0 0% 30% / 70%);
 	--color-tertiary: hsl(0 0% 30%);
 
 	--background-header: hsl(0 0% 80%);
 	--background-primary: hsl(0 0% 90%);
-	--background-secondary: hsl(0 0% 80%);
+	--background-secondary: hsl(0 0% 86% / 60%);
 	--background-tertiary: hsl(0 0% 85%);
 
-	--border-primary: hsl(0 0% 85%);
-	--border-secondary: hsl(0 0% 90%);
+	--border-primary: hsl(0 0% 80% / 50%);
+	--border-secondary: hsl(0 0% 50% / 50%);
 	--border-tertiary: hsl(0 0% 50%);
 
-	--button-color: hsl(0 0% 90%);
+	--button-color: #fff;
 	--button-color-active: hsl(0 0% 80%);
 
-	--button-background: hsl(0 0% 55%);
-	--button-background-hover: hsl(0 0% 50%);
-	--button-background-active: hsl(0 0% 45%);
+	--button-border: hsl(250, 20%, 45%);
+	--button-background: hsl(250, 90%, 70%);
+	--button-background-hover: hsl(250 40% 50%);
+	--button-background-active: hsl(250 40% 45%);
 }

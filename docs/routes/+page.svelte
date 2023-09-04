@@ -2,40 +2,41 @@
 	import { Tabs, Button, Select, TextInput, DropdownMenu } from 'voxeliface';
 
 	import { theme } from '../stores';
-	const themes = ['dark', 'light', 'color|purple'];
+	const themes = ['dark', 'light'];
 
 	let tabsTest = 0;
-	let inputTest = 'burgers';
+	let inputTest = '';
 	let dropdownTrigger: () => void;
 </script>
 
-<h1>{inputTest}</h1>
-<p>holy bingle. what?! :3</p>
-<p class="sub">i omor</p>
-<TextInput bind:value={inputTest} placeholder="burgers"/>
-<TextInput multiline placeholder="winner!"/>
+<h1>Next Generation Burgers</h1>
+<p class="sub">burgers are now better than ever!</p>
 
-<div>
-	<Button on:click={() => $theme = 'dark'}>Button</Button>
-	<Button disabled>Disabled</Button>
+<TextInput bind:value={inputTest} placeholder="Your Name"/><br/>
+<TextInput multiline placeholder="Your reasoning for consumption"/>
+
+<div class="buttons">
+	<Button on:click={() => $theme = 'light'}>Get Started</Button>
+	<Button disabled>Gain Money</Button>
+</div>
+<div class="buttons">
+	<Button colour="secondary">Buy OMORI</Button>
+	<Button circle>🍔</Button>
 </div>
 
-<p class="theme-select">
-	theme
-	<Select.Root bind:value={$theme} placeholder="Select a value">
-		<p>Themes</p>
-		{#each themes as theme}
-			<Select.Item value={theme}>
-				<img src="https://cdn.discordapp.com/attachments/957170483097391124/1102481867405541376/image.png" alt="img" width="16" height="16"/>
-				{theme}
-			</Select.Item>
-		{/each}
-		<Select.Item value="dark">
-			LONGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-		</Select.Item>
-	</Select.Root>
+<p class="input-label">
+	Colour Theme
 </p>
+<Select.Root bind:value={$theme} placeholder="Select a value">
+	<p>Themes</p>
+	{#each themes as theme}
+		<Select.Item value={theme}>
+			{theme}
+		</Select.Item>
+	{/each}
+</Select.Root>
 
+<br/><br/><br/><br/><br/><br/><br/><br/>
 <Tabs.Root bind:value={tabsTest}>
 	<Tabs.Item value={0} title="ohayō">
 		good morning!
@@ -103,14 +104,19 @@
 </svelte:head>
 
 <style lang="scss">
-	.theme-select {
-		margin: 16px 0;
-		img {
-			object-fit: contain;
-		}
+	h1 {
+		margin: 32px 0 16px;
+		font-size: 3em;
+		font-weight: 750;
 	}
 	.sub {
 		color: var(--color-secondary);
+		margin: 0 0 32px;
+	}
+	.buttons {
+		gap: 16px;
+		margin: 16px 0 0;
+		display: flex;
 	}
 
 	:global(.tabs-container) {

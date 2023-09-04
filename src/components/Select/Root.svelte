@@ -26,7 +26,7 @@
 </script>
 
 <button type="button" class="trigger focusable" on:click={() => show = true}>
-	<div class="item">
+	<div class="item" class:placeholder={!inner}>
 		{#if inner}
 			{#each [...inner].slice(0, inner[inner.length - 1]?.tagName === 'svg' ? -1 : undefined) as element}
 				{@html element.outerHTML ?? element.textContent}
@@ -48,35 +48,40 @@
 	.trigger {
 		gap: 32px;
 		color: var(--color-primary);
-		height: 32px;
+		height: 40px;
 		border: none;
-		padding: 0 16px;
+		cursor: pointer;
+		padding: 0 20px;
 		display: inline-flex;
 		position: relative;
 		min-width: 192px;
-		font-size: .75em;
-		background: none;
+		font-size: 14px;
 		box-sizing: border-box;
-		transition: box-shadow .25s;
-		box-shadow: 0 0 0 1px var(--border-primary);
+		transition: box-shadow .5s;
+		background: var(--background-secondary);
+		box-shadow: inset 0 0 0 1px var(--border-primary);
+		font-weight: 500;
 		user-select: none;
 		align-items: center;
 		font-family: var(--font-primary);
-		border-radius: 4px;
+		border-radius: 20px;
 		justify-content: space-between;
 		.item {
-			gap: 8px;
+			gap: 12px;
 			display: flex;
 			align-items: center;
+			&.placeholder {
+				color: var(--color-secondary);
+			}
 		}
 		&:hover {
-			box-shadow: 0 0 0 1px var(--border-secondary);
+			box-shadow: inset 0 0 0 1px var(--border-secondary);
 		}
 	}
 	.menu-content {
-		top: -9px;
-		left: -13px;
-		min-width: 100%;
+		top: -4px;
+		left: -16px;
+		width: 100%;
 	}
 	.cover {
 		top: 0;

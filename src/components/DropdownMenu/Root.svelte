@@ -16,15 +16,15 @@
 		// TODO: clean-up 👍
 		const width = window.innerWidth, height = window.innerHeight;
 		const rect1 = container.getBoundingClientRect(), rect2 = content.getBoundingClientRect();
-		let top = rect1.y + rect1.height + 8;
-		if (top > height - rect2.height - 8) {
-			top = rect1.y - rect2.height - 8;
+		let top = rect1.y + rect1.height + 16;
+		if (top > height - rect2.height - 24) {
+			top = rect1.y - rect2.height - 24;
 			arrow.style.top = '100%';
 			arrow.style.transform = 'translate(-50%, 0) rotate(180deg)';
 		} else
 			arrow.style.top = '', arrow.style.transform = '';
 
-		const left = clamp(rect1.x + rect1.width / 2 - rect2.width / 2, 16, width - rect2.width - 8);
+		const left = clamp(rect1.x + rect1.width / 2 - rect2.width / 2, 32, width - rect2.width - 32);
 		arrow.style.left = `${rect1.x - left + rect1.width / 2}px`;
 		content.style.top = `${top}px`;
 		content.style.left = `${left}px`;

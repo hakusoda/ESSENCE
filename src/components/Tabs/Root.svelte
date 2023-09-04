@@ -38,7 +38,7 @@
 <div class="tabs-container" bind:this={container}>
 	<div class="buttons" use:resize={() => _143++}>
 		{#each items as title, val}
-			<button type="button" class="focusable" tabindex={val} bind:this={buttons[val]} class:selected={value === val} on:click={() => (value = val, $store = val)}>
+			<button type="button" tabindex={val} bind:this={buttons[val]} class:selected={value === val} on:click={() => (value = val, $store = val)}>
 				{title}
 			</button>
 		{/each}
@@ -52,13 +52,14 @@
 <style lang="scss">
 	.tabs-container {
 		.buttons {
-			height: 36px;
+			height: 40px;
 			display: flex;
 			overflow: hidden;
 			position: relative;
 			background: var(--background-secondary);
+			box-shadow: inset 0 0 0 1px var(--border-primary);
 			margin-bottom: 8px;
-			border-radius: 12px;
+			border-radius: 20px;
 			button {
 				flex: 1 auto;
 				color: var(--color-secondary);
@@ -67,17 +68,21 @@
 				padding: 0 16px;
 				background: none;
 				transition: .25s background;
+				font-weight: 500;
 				font-family: var(--font-primary);
 				&:hover, &:focus, &.selected {
 					color: var(--color-primary);
 					background: var(--background-tertiary);
+				}
+				&.selected {
+					font-weight: 600;
 				}
 			}
 			.indicator {
 				bottom: 0;
 				height: 4px;
 				position: absolute;
-				transition: .25s left, .25s width;
+				transition: .5s left, .5s width;
 				background: var(--button-background);
 			}
 		}

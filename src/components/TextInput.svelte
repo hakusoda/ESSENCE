@@ -17,29 +17,37 @@
 
 <style lang="scss">
 	.text-input {
+		width: auto;
 		color: var(--color-primary);
 		border: none;
-		display: inline-block;
-		padding: 9px 16px 8px;
+		height: 40px;
+		display: inline-flex;
+		padding: 0 20px;
 		min-width: 192px;
-		font-size: .75em;
+		font-size: 14px;
 		min-height: 32px;
-		background: none;
 		box-sizing: border-box;
-		transition: box-shadow .25s;
+		transition: box-shadow .5s;
+		background: var(--background-secondary);
 		box-shadow: inset 0 0 0 1px var(--border-primary);
-		line-height: 1.25;
+		font-weight: 500;
+		line-height: 18px;
+		align-items: center;
 		font-family: var(--font-primary);
-		border-radius: 4px;
+		border-radius: 20px;
 		&:hover {
 			box-shadow: inset 0 0 0 1px var(--border-secondary);
 		}
 		&::placeholder {
-			color: var(--color-secondary);
+			color: var(--color-tertiary);
 		}
-		&[contenteditable]:empty::before {
-			color: var(--color-secondary);
-			content: var(--placeholder);
+		&[contenteditable] {
+			height: unset;
+			padding: 11px 20px;
+			&:empty::before {
+				color: var(--color-tertiary);
+				content: var(--placeholder);
+			}
 		}
 	}
 </style>

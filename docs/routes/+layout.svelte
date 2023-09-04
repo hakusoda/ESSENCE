@@ -3,22 +3,12 @@
 	import TextLogo from '../components/TextLogo.svelte';
 
 	import { theme } from '../stores';
-	const themeHues: Record<string, number> = {
-		purple: 280
-	};
-	$: [themeName, themeColor] = $theme.split('|');
-	function themeHue(node: HTMLDivElement, color: string) {
-		node.style.setProperty('--theme-hue', themeHues[color]?.toString());
-		return {
-			update: (color: string) =>
-				node.style.setProperty('--theme-hue', themeHues[color]?.toString())
-		}
-	}
 </script>
 
-<div class="app theme-{themeName}" use:themeHue={themeColor}>
+<div class="app theme-{$theme}">
 	<header>
 		<TextLogo/>
+		<p>user interface library 🦑</p>
 	</header>
 	<main class="content">
 		<slot/>
@@ -30,14 +20,20 @@
 		width: 100%;
 		height: 100%;
 		overflow: auto;
-		background: var(--background-primary);
 		header {
-			padding: 8px 32px;
-			background: var(--background-header);
+			display: flex;
+			padding: 12px 32px;
+			p {
+				color: var(--color-secondary);
+				margin: auto 32px;
+				font-size: 1.2em;
+				font-weight: 500;
+				font-variant: small-caps;
+			}
 		}
 		.content {
 			display: flex;
-			padding: 0 2rem;
+			padding: 16px 64px;
 			flex-direction: column;
 		}
 	}

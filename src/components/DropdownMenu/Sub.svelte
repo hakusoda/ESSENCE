@@ -35,11 +35,11 @@
 		.menu-content {
 			top: 0;
 			left: calc(100% + 8px);
-			animation: show-menu-right .25s cubic-bezier(0, 0, 0, 1.0);
+			transform-origin: left center;
 			&.left {
 				left: unset;
 				right: calc(100% + 8px);
-				animation: show-menu-left .25s cubic-bezier(0, 0, 0, 1.0);
+				transform-origin: right center;
 			}
 		}
 		svg.chevron {
