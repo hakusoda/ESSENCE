@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tabs, Button, Select, TextInput, DropdownMenu } from 'voxeliface';
+	import { Tabs, Button, Select, TextInput, NumberInput, DropdownMenu } from 'voxeliface';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light'];
@@ -35,6 +35,8 @@
 		</Select.Item>
 	{/each}
 </Select.Root>
+<br/>
+<NumberInput/>
 
 <br/><br/><br/><br/><br/><br/><br/><br/>
 <Tabs.Root bind:value={tabsTest}>
