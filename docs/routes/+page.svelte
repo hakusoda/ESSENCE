@@ -65,7 +65,10 @@
 		<Button slot="trigger" on:click={dropdownTrigger}>touchdown!</Button>
 		<p>User Options</p>
 		<a href="/">Your Profile</a>
+		<p>User Options</p>
+		<a href="/">Your Profile</a>
 		<div class="separator"/>
+		<p>woooooahh</p>
 		<DropdownMenu.Sub>
 			<svelte:fragment slot="trigger">
 				More Options...
