@@ -10,7 +10,7 @@
 </script>
 
 {#if multiline}
-	<span class="text-input focusable" role="textbox" contenteditable bind:innerText={value} style={`--placeholder: "${placeholder}";`}/>
+	<textarea class="text-input focusable" {placeholder} bind:value/>
 {:else}
 	<input class="text-input focusable" {placeholder} bind:value use:typeAction/>
 {/if}
@@ -41,13 +41,11 @@
 		&::placeholder {
 			color: var(--color-tertiary);
 		}
-		&[contenteditable] {
+		&:is(textarea) {
 			height: unset;
+			resize: vertical;
 			padding: 11px 20px;
-			&:empty::before {
-				color: var(--color-tertiary);
-				content: var(--placeholder);
-			}
+			min-height: 10rem;
 		}
 	}
 </style>
