@@ -81,7 +81,7 @@
 	.menu-content {
 		top: -4px;
 		left: -16px;
-		width: 100%;
+		width: calc(100% + 32px);
 	}
 	.cover {
 		top: 0;
