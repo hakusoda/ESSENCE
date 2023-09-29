@@ -257,9 +257,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^1.24.0":
-  version: 1.24.0
-  resolution: "@sveltejs/kit@npm:1.24.0"
+"@sveltejs/kit@npm:^1.25.1":
+  version: 1.25.1
+  resolution: "@sveltejs/kit@npm:1.25.1"
   dependencies:
     "@sveltejs/vite-plugin-svelte": "npm:^2.4.1"
     "@types/cookie": "npm:^0.5.1"
@@ -273,13 +273,13 @@ __metadata:
     set-cookie-parser: "npm:^2.6.0"
     sirv: "npm:^2.0.2"
     tiny-glob: "npm:^0.2.9"
-    undici: "npm:~5.23.0"
+    undici: "npm:~5.25.0"
   peerDependencies:
     svelte: ^3.54.0 || ^4.0.0-next.0
     vite: ^4.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 8f27b881591314c2e85d51ab36312717f2863a6ab5997faf5c1a4b7de4c6a289f634cd5dc31997ab12a5290d13a2c48b75283e778c85318e54333965aa4ba817
+  checksum: 457df054f69b0d49e6fc06d78e64811210c281f64935a262add89b94ffe74d09251284d8e3e13498290a65439e548d7918c2f2b8c74e005f1139b2ca1226c534
   languageName: node
   linkType: hard
 
@@ -364,7 +364,7 @@ __metadata:
   resolution: "@voxelified/voxeliface@workspace:."
   dependencies:
     "@sveltejs/adapter-static": "npm:^2.0.3"
-    "@sveltejs/kit": "npm:^1.24.0"
+    "@sveltejs/kit": "npm:^1.25.1"
     "@sveltejs/package": "npm:^2.2.2"
     sass: "npm:^1.66.1"
     svelte: "npm:^4.2.0"
@@ -2098,12 +2098,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:~5.23.0":
-  version: 5.23.0
-  resolution: "undici@npm:5.23.0"
+"undici@npm:~5.25.0":
+  version: 5.25.2
+  resolution: "undici@npm:5.25.2"
   dependencies:
     busboy: "npm:^1.6.0"
-  checksum: 43a6ecddb30733adc33bc7a922fa7609c3e75f6555beab05e26c50f4be20ed893d7e9ac4332b332320961252dbc89c865955a5b5dbc3bcd2197ca4f015e7ad97
+  checksum: af3ce7b3665a29350389ebd85a6a8451435c0effdaae091f8799dd807919c3f353407f381c3d810f3535fecdaf7eca4a4e25b8450976d303ee054baec534906e
   languageName: node
   linkType: hard
 

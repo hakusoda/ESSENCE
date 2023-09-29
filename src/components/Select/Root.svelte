@@ -9,12 +9,13 @@
 	let show = false;
 	let inner: any;
 	let items: Record<any, HTMLElement> = {};
+	let menuElement: HTMLDivElement;
 	const store = writable(value);
 	setContext(key, {
 		set: (newValue: any, html: any) => {
 			value = newValue;
 			inner = html;
-			show = false;
+			menuElement.hidePopover();
 		},
 		items,
 		current: store
@@ -23,9 +24,22 @@
 	onMount(() => inner = items[value]?.childNodes);
 	
 	$: $store = value, inner = items[value]?.childNodes;
+
+	let top = 0;
+	let left = 0;
+	let width = 0;
+	let container: HTMLButtonElement;
+	$: if (menuElement) {
+		const rect = container.getBoundingClientRect(), rect2 = menuElement.getBoundingClientRect();
+		top = Math.min(rect.y - 8, window.innerHeight - rect2.height - 80);
+		left = rect.x - 8;
+		width = rect.width + 16;
+
+		menuElement.showPopover();
+	}
 </script>
 
-<button type="button" class="trigger focusable" on:click={() => show = true}>
+<button type="button" class="trigger focusable" on:click={() => show = true} bind:this={container}>
 	<div class="item" class:placeholder={!inner}>
 		{#if inner}
 			{#each [...inner].slice(0, inner[inner.length - 1]?.tagName === 'svg' ? -1 : undefined) as element}
@@ -38,11 +52,22 @@
 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
 		<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
 	</svg>
-	<button type="button" class="cover" class:show on:click|stopPropagation={() => show = false}/>
-	<div class="menu-content" class:show>
-		<slot/>
-	</div>
 </button>
+{#if show}
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<div class="backdrop" class:show on:click={event => {
+		if (event.target === event.currentTarget)
+			show = false;
+	}}>
+		<div class="menu-content" style={`top: ${top}px; left: ${left}px; width: ${width}px`} popover bind:this={menuElement} on:toggle={event => {
+			if (event.newState !== 'open')
+				show = false;
+		}}>
+			<slot/>
+		</div>
+	</div>
+{/if}
 
 <style lang="scss">
 	.trigger {
@@ -53,7 +78,6 @@
 		cursor: pointer;
 		padding: 0 20px;
 		display: inline-flex;
-		position: relative;
 		min-width: 192px;
 		font-size: 14px;
 		box-sizing: border-box;
@@ -63,6 +87,7 @@
 		font-weight: 500;
 		user-select: none;
 		align-items: center;
+		white-space: nowrap;
 		font-family: var(--font-primary);
 		border-radius: 20px;
 		justify-content: space-between;
@@ -78,22 +103,19 @@
 			box-shadow: inset 0 0 0 1px var(--border-secondary);
 		}
 	}
-	.menu-content {
-		top: -4px;
-		left: -16px;
-		width: calc(100% + 32px);
-	}
-	.cover {
+	.backdrop {
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		border: none;
-		display: none;
+		width: 100vw;
+		height: 100vh;
+		z-index: 1000;
 		position: fixed;
-		background: none;
+		visibility: hidden;
+		.menu-content {
+			position: fixed;
+		}
 		&.show {
-			display: block
+			visibility: visible;
 		}
 	}
 </style>

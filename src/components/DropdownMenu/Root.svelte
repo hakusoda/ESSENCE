@@ -33,7 +33,6 @@
 
 	let arrow: SVGSVGElement;
 	let content: HTMLDivElement;
-	let backdrop: HTMLDivElement;
 	let container: HTMLDivElement;
 
 	const clickHandler = ({ target }: MouseEvent) => {
@@ -58,8 +57,8 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="backdrop" class:show bind:this={backdrop} on:click={event => {
-	if (event.target === backdrop)
+<div class="backdrop" class:show on:click={event => {
+	if (event.target === event.currentTarget)
 		show = false;
 }}>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->

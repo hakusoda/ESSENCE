@@ -5,12 +5,20 @@
 	import { key } from '.';
 	const currentItem: Writable<HTMLElement | null> = getContext(key);
 
-	let left = false;
+	let top = 0;
+	let left = 0;
+	let isLeft = false;
 	let element: HTMLDivElement;
+	let menuElement: HTMLDivElement;
 	$: hover = $currentItem === element || element?.contains($currentItem);
-	$: if (hover) {
-		const rect = element.getBoundingClientRect();
-		left = rect.x + rect.width + 128 > window.innerWidth;
+	$: if (menuElement) {
+		const rect = element.getBoundingClientRect(), rect2 = menuElement.getBoundingClientRect();
+		top = Math.min(rect.y, window.innerHeight - rect2.height - 80);
+
+		const l = rect.x + rect.width + 16;
+		left = (isLeft = l + rect2.width > window.innerWidth - 16) ? rect.x - rect2.width - 32 : l;
+
+		menuElement.showPopover();
 	}
 </script>
 
@@ -23,7 +31,10 @@
 		</svg>
 	</button>
 	{#if hover}
-		<div class="menu-content show" class:left>
+		<div class="menu-content" popover class:left={isLeft} bind:this={menuElement} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
+			if (event.newState !== 'open')
+				hover = false;
+		}}>
 			<slot/>
 		</div>
 	{/if}
@@ -31,14 +42,9 @@
 
 <style lang="scss">
 	.sub {
-		position: relative;
 		.menu-content {
-			top: 0;
-			left: calc(100% + 8px);
 			transform-origin: left center;
 			&.left {
-				left: unset;
-				right: calc(100% + 8px);
 				transform-origin: right center;
 			}
 		}
