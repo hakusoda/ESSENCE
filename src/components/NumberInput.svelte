@@ -3,7 +3,9 @@
 	export let max: string | number | null = null;
 	export let step: string | number | null = null;
 	export let value = 0;
+	export let string = '0';
 	export let placeholder = '';
+	$: string = value.toString();
 
 	let interval: number | undefined = undefined;
 	const startInterval = (step: number) => {
