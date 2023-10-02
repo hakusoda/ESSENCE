@@ -31,7 +31,7 @@
 		</svg>
 	</button>
 	{#if hover}
-		<div class="menu-content" popover class:left={isLeft} bind:this={menuElement} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
+		<div class="menu-content show" popover class:left={isLeft} bind:this={menuElement} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
 			if (event.newState !== 'open')
 				hover = false;
 		}}>

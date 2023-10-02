@@ -1,5 +1,6 @@
 dist/
+.yarn/
 .svelte-kit/
 node_modules/
 yarn-error.log
-.yarn
+vite.config.*.timestamp*

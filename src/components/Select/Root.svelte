@@ -12,30 +12,26 @@
 	let menuElement: HTMLDivElement;
 	const store = writable(value);
 	setContext(key, {
-		set: (newValue: any, html: any) => {
+		set: (newValue: any) => {
 			value = newValue;
-			inner = html;
-			menuElement.hidePopover();
+			show = false;
 		},
 		items,
 		current: store
 	});
-
-	onMount(() => inner = items[value]?.childNodes);
 	
 	$: $store = value, inner = items[value]?.childNodes;
+	onMount(() => inner = items[value]?.childNodes);
 
 	let top = 0;
 	let left = 0;
 	let width = 0;
 	let container: HTMLButtonElement;
-	$: if (menuElement) {
+	$: if (show) {
 		const rect = container.getBoundingClientRect(), rect2 = menuElement.getBoundingClientRect();
 		top = Math.min(rect.y - 8, window.innerHeight - rect2.height - 80);
 		left = rect.x - 8;
 		width = rect.width + 16;
-
-		menuElement.showPopover();
 	}
 </script>
 
@@ -53,21 +49,14 @@
 		<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
 	</svg>
 </button>
-{#if show}
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="backdrop" class:show on:click={event => {
-		if (event.target === event.currentTarget)
-			show = false;
-	}}>
-		<div class="menu-content" style={`top: ${top}px; left: ${left}px; width: ${width}px`} popover bind:this={menuElement} on:toggle={event => {
-			if (event.newState !== 'open')
-				show = false;
-		}}>
-			<slot/>
-		</div>
+
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="backdrop" class:show on:click|self={() => show = false}>
+	<div class="menu-content" class:show style={`top: ${top}px; left: ${left}px; width: ${width}px`} bind:this={menuElement}>
+		<slot/>
 	</div>
-{/if}
+</div>
 
 <style lang="scss">
 	.trigger {
