@@ -1,14 +1,17 @@
 <script lang="ts">
 	import { key } from '.';
 	import { getContext } from 'svelte';
-	const { set, items, current } = getContext<any>(key);
-
 	export let value: any;
 
-	$: selected = $current === value;
+	const { set, items, query, current } = getContext<any>(key) ?? { items: [], current: {} };
+
+	let element: HTMLButtonElement;
+	$: $items[value] = element;
+
+	$: selected = $current.values?.includes(value) || $current.value === value;
 </script>
 
-<button type="button" class="focusable" bind:this={items[value]} class:selected on:click|stopPropagation={() => set(value)}>
+<button type="button" class="focusable" class:hidden={!element?.textContent?.toLowerCase().includes($query?.toLowerCase())} bind:this={element} class:selected on:click|stopPropagation={() => set(value)}>
 	<slot/>
 	{#if selected}
 		<svg class="indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">

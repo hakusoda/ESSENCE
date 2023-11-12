@@ -3,7 +3,9 @@
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light'];
+	const enjoyables = ['burgers', 'soda', 'cats', 'mushrooms', 'movies', 'exercise'];
 
+	let enjoys: string[] = ['burgers'];
 	let tabsTest = 0;
 	let inputTest = '';
 	let dropdownTrigger: () => void;
@@ -59,6 +61,18 @@
 		143 143 143 143 143 143
 	</div>
 </div>
+
+<p class="input-label">
+	what do you enjoy?
+</p>
+<Select.Root bind:values={enjoys} placeholder="Select one or more items" withSearch>
+	{#each enjoyables as item}
+		<Select.Item value={item}>
+			{item}
+		</Select.Item>
+	{/each}
+</Select.Root>
+<p>wow! you enjoy {enjoys.join(', ')}!</p>
 
 <div class="test">
 	<DropdownMenu.Root bind:trigger={dropdownTrigger}>
