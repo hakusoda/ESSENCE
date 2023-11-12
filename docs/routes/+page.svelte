@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tabs, Button, Select, TextInput, NumberInput, DropdownMenu } from 'voxeliface';
+	import { Tabs, Button, Select, TextInput, NumberInput, DropdownMenu } from '$essence';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light'];

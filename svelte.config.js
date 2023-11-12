@@ -6,7 +6,7 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 export default {
 	kit: {
 		alias: {
-			voxeliface: 'src'
+			'$essence': 'src'
 		},
 		files: {
 			lib: 'src',

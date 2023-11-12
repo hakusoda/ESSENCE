@@ -169,6 +169,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hakumi/essence@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@hakumi/essence@workspace:."
+  dependencies:
+    "@sveltejs/adapter-static": "npm:^2.0.3"
+    "@sveltejs/kit": "npm:^1.25.1"
+    "@sveltejs/package": "npm:^2.2.2"
+    sass: "npm:^1.66.1"
+    svelte: "npm:^4.2.1"
+    svelte-preprocess: "npm:^5.0.4"
+    typescript: "npm:^5.2.2"
+    vite: "npm:^4.4.9"
+  languageName: unknown
+  linkType: soft
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -358,21 +373,6 @@ __metadata:
   checksum: 8e7a3b6c1158d3a87b643c91f6cf2552ae781bc2a8f8b17a61e7b1ddd9ce480fd3483459a9b6e0f205ebe158ed67c11fd9a3206262057a14f655138c2322b0c9
   languageName: node
   linkType: hard
-
-"@voxelified/voxeliface@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@voxelified/voxeliface@workspace:."
-  dependencies:
-    "@sveltejs/adapter-static": "npm:^2.0.3"
-    "@sveltejs/kit": "npm:^1.25.1"
-    "@sveltejs/package": "npm:^2.2.2"
-    sass: "npm:^1.66.1"
-    svelte: "npm:^4.2.1"
-    svelte-preprocess: "npm:^5.0.4"
-    typescript: "npm:^5.2.2"
-    vite: "npm:^4.4.9"
-  languageName: unknown
-  linkType: soft
 
 "abbrev@npm:^1.0.0":
   version: 1.1.1

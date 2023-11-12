@@ -1,5 +1,5 @@
 <script lang="ts">
-	import 'voxeliface/styles.scss';
+	import '$essence/styles.scss';
 	import TextLogo from '../components/TextLogo.svelte';
 
 	import { theme } from '../stores';

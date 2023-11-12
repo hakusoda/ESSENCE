@@ -1,5 +1,5 @@
 {
-	"name": "@voxelified/voxeliface",
+	"name": "@hakumi/essence",
 	"type": "module",
 	"main": "src/index.ts",
 	"files": [
@@ -15,7 +15,7 @@
 		}
 	},
 	"version": "2.2.3",
-	"repository": "https://github.com/voxelified/voxeliface.git",
+	"repository": "https://github.com/hakusoda/essence.git",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
