@@ -43,8 +43,10 @@
 		}
 	};
 	const moveHandler = ({ target }: MouseEvent) => {
+		console.log(target);
 		if (target) {
 			const { nodeName } = target as HTMLElement;
+			console.log(nodeName);
 			if (nodeName === 'BUTTON' || nodeName === 'A')
 				$currentItem = target as HTMLElement;
 		}

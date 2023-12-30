@@ -9,7 +9,7 @@
 	let left = 0;
 	let isLeft = false;
 	let element: HTMLDivElement;
-	let menuElement: HTMLDivElement;
+	let menuElement: HTMLDialogElement;
 	$: hover = $currentItem === element || element?.contains($currentItem);
 	$: if (menuElement) {
 		const rect = element.getBoundingClientRect(), rect2 = menuElement.getBoundingClientRect();
@@ -18,7 +18,8 @@
 		const l = rect.x + rect.width + 16;
 		left = (isLeft = l + rect2.width > window.innerWidth - 16) ? rect.x - rect2.width - 32 : l;
 
-		menuElement.showPopover();
+		// TODO: revert to popover when firefox supports it
+		menuElement.showModal();
 	}
 </script>
 
@@ -31,21 +32,25 @@
 		</svg>
 	</button>
 	{#if hover}
-		<div class="menu-content show" popover class:left={isLeft} bind:this={menuElement} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
+		<dialog class="menu-content show" class:left={isLeft} bind:this={menuElement} on:click={() => menuElement.close()} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
 			if (event.newState !== 'open')
 				hover = false;
 		}}>
 			<slot/>
-		</div>
+		</dialog>
 	{/if}
 </div>
 
 <style lang="scss">
 	.sub {
 		.menu-content {
+			position: fixed;
 			transform-origin: left center;
 			&.left {
 				transform-origin: right center;
+			}
+			&::backdrop {
+				display: none;
 			}
 		}
 		svg.chevron {
