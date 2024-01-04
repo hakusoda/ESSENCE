@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tabs, Button, Select, TextInput, NumberInput, DropdownMenu } from '$essence';
+	import { Tabs, Button, Select, TextInput, NumberInput, ContextMenu } from '$essence';
 
 	import { theme } from '../stores';
 	const themes = ['dark', 'light'];
@@ -8,7 +8,7 @@
 	let enjoys: string[] = ['burgers'];
 	let tabsTest = 0;
 	let inputTest = '';
-	let dropdownTrigger: () => void;
+	let contextTrigger: (event: MouseEvent) => void;
 </script>
 
 <h1>Next Generation Burgers</h1>
@@ -75,27 +75,27 @@
 <p>wow! you enjoy {enjoys.join(', ')}!</p>
 
 <div class="test">
-	<DropdownMenu.Root bind:trigger={dropdownTrigger}>
-		<Button slot="trigger" on:click={dropdownTrigger}>touchdown!</Button>
+	<Button on:click={contextTrigger}>touchdown!</Button>
+	<ContextMenu.Root bind:trigger={contextTrigger}>
 		<p>User Options</p>
 		<a href="/">Your Profile</a>
 		<p>User Options</p>
 		<a href="/">Your Profile</a>
 		<div class="separator"/>
 		<p>woooooahh</p>
-		<DropdownMenu.Sub>
+		<ContextMenu.Sub>
 			<p>Deep Travel</p>
 			<svelte:fragment slot="trigger">
 				More Options...
 			</svelte:fragment>
 			<a href="/">Your Profile</a>
 			<div class="separator"/>
-			<DropdownMenu.Sub>
+			<ContextMenu.Sub>
 				<svelte:fragment slot="trigger">
 					More Options...
 				</svelte:fragment>
 				<p>Deeper Travel</p>
-				<DropdownMenu.Sub>
+				<ContextMenu.Sub>
 					<svelte:fragment slot="trigger">
 						Bigger Options...
 					</svelte:fragment>
@@ -121,14 +121,14 @@
 					<button type="button">Everything is going to be okay...</button>
 					<button type="button">Everything is going to be okay...</button>
 					<button type="button">Everything is going to be okay...</button>
-				</DropdownMenu.Sub>
-			</DropdownMenu.Sub>
+				</ContextMenu.Sub>
+			</ContextMenu.Sub>
 			<div class="separator"/>
 			<button>Sign out</button>
-		</DropdownMenu.Sub>
+		</ContextMenu.Sub>
 		<div class="separator"/>
 		<button>Sign out</button>
-	</DropdownMenu.Root>
+	</ContextMenu.Root>
 </div>
 
 <svelte:head>

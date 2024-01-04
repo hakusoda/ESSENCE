@@ -24,15 +24,18 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="sub" bind:this={element}>
-	<button type="button" class:hover>
+<div class="sub-context-menu" bind:this={element}>
+	<button type="button" class="sub-context-menu-trigger" class:hover>
 		<slot name="trigger"/>
 		<svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
 			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
 		</svg>
 	</button>
 	{#if hover}
-		<dialog class="menu-content show" class:left={isLeft} bind:this={menuElement} on:click={() => menuElement.close()} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
+	<!-- svelte-ignore a11y-autofocus -->
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+		<dialog class="context-menu menu-content show" class:left={isLeft} autofocus bind:this={menuElement} on:click={() => menuElement.close()} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
 			if (event.newState !== 'open')
 				hover = false;
 		}}>
@@ -42,7 +45,7 @@
 </div>
 
 <style lang="scss">
-	.sub {
+	.sub-context-menu {
 		.menu-content {
 			position: fixed;
 			transform-origin: left center;

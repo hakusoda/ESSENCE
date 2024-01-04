@@ -27,10 +27,6 @@
 	]);
 
 	const dispatch = createEventDispatcher();
-	const dispatchClick = () => {
-		if (!disabled)
-			dispatch('click');
-	};
 	const handleChangeFiles = (event: Event) => {
 		if (!disabled)
 			dispatch('files', (event.target as HTMLInputElement).files || new FileList());
@@ -43,11 +39,11 @@
 </script>
 
 {#if as === 'a'}
-	<a class={className} {href} {disabled} {title} {target} on:click={dispatchClick}>
+	<a class={className} {href} {disabled} {title} {target} on:click>
 		<slot />
 	</a>
 {:else if as === 'input'}
-	<input class={className} {value} {disabled} {title} on:click={dispatchClick} />
+	<input class={className} {value} {disabled} {title} on:click/>
 {:else if as === 'file'}
 	<label
 		class={className}
@@ -62,7 +58,7 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<svelte:element this={as} class={className} {disabled} {title} tabindex="0" on:click={dispatchClick}>
+	<svelte:element this={as} class={className} {disabled} {title} tabindex="0" on:click>
 		<slot/>
 	</svelte:element>
 {/if}
