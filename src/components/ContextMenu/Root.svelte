@@ -1,4 +1,5 @@
 <script lang="ts">
+	// TODO: rewrite to work in SSR
 	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte';
 
@@ -16,7 +17,6 @@
 		content.style.display = 'block';
 
 		const target = event.target! as HTMLElement;
-		console.log(target);
 
 		// TODO: clean-up 👍
 		const width = window.innerWidth, height = window.innerHeight;
@@ -55,10 +55,10 @@
 <!-- svelte-ignore a11y-autofocus -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<dialog autofocus bind:this={dialogElement} on:click={() => (dialogElement.close(), $currentItem = null)}>
+<dialog autofocus bind:this={dialogElement} on:click|self={() => (dialogElement.close(), $currentItem = null)}>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="context-menu menu-content show" bind:this={content} on:click|stopPropagation={clickHandler} on:mousemove={moveHandler}>
+	<div class="context-menu menu-content show" bind:this={content} on:click={clickHandler} on:mousemove={moveHandler}>
 		<slot/>
 		<svg class="arrow" width="10" height="5" viewBox="0 0 30 10" bind:this={arrow}>
 			<polygon points="0,10 30,10 15,0" fill="currentColor"/>
@@ -77,6 +77,9 @@
 		}
 		&::backdrop {
 			display: none;
+		}
+		.arrow {
+			display: none; // temporary
 		}
 	}
 </style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	// TODO: rewrite to work in SSR
 	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte';
 
@@ -102,6 +103,7 @@
 		box-shadow: inset 0 0 0 1px var(--border-primary);
 		font-weight: 500;
 		user-select: none;
+		-webkit-user-select: none;
 		align-items: center;
 		white-space: nowrap;
 		font-family: var(--font-primary);

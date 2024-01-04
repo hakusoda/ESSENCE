@@ -35,7 +35,7 @@
 	<!-- svelte-ignore a11y-autofocus -->
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-		<dialog class="context-menu menu-content show" class:left={isLeft} autofocus bind:this={menuElement} on:click={() => menuElement.close()} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
+		<dialog class="context-menu menu-content show" class:left={isLeft} autofocus bind:this={menuElement} style={`top: ${top}px; left: ${left}px`} on:toggle={event => {
 			if (event.newState !== 'open')
 				hover = false;
 		}}>

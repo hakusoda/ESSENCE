@@ -1,4 +1,5 @@
 <script lang="ts">
+	// TODO: rewrite to work in SSR
 	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte';
 
