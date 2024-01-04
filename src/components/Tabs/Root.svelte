@@ -66,6 +66,7 @@
 				border: none;
 				outline: none;
 				padding: 0 16px;
+				font-size: .8em;
 				background: none;
 				transition: .25s background;
 				font-weight: 500;
