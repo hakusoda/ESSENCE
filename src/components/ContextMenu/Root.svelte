@@ -33,7 +33,7 @@
 		arrow.style.left = `${rect1.x - left + rect1.width / 2}px`;
 		content.style.top = `${top}px`;
 		content.style.left = `${left}px`;
-		content.style.display = '';
+		content.style.removeProperty('display');
 	};
 
 	const clickHandler = ({ target }: MouseEvent) => {

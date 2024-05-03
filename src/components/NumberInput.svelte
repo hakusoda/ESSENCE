@@ -1,48 +1,70 @@
 <script lang="ts">
-	export let min: string | number | null = null;
-	export let max: string | number | null = null;
-	export let step: string | number | null = null;
-	export let value = 0;
+	export let min: string | number | null | undefined = null;
+	export let max: string | number | null | undefined = null;
+	export let step: string | number | null | undefined = null;
+	export let value: number | null | undefined = 0;
 	export let string = '0';
 	export let placeholder = '';
-	$: string = value.toString();
+	export let no_controls = false;
+	$: string = value ? value.toString() : '0';
 
 	let interval: number | undefined = undefined;
 	const startInterval = (step: number) => {
 		clearInterval(interval);
-		interval = setInterval(() => value += step, 100);
+		interval = setInterval(() => value! += step, 100);
 	};
 	const stopInterval = () => (interval = undefined, clearInterval(interval));
 
+	const inc = (increment: number) => value = (value ?? 0) + increment;
 	$: stepNum = Number(step ?? 1);
 </script>
 
-<div class="number-input">
-	<button type="button" on:click={() => value += stepNum}>
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-		</svg>
-	</button>
+<div class="number_input" class:no_controls>
+	{#if !no_controls}
+		<button type="button" on:click={() => inc(stepNum)}>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+			</svg>
+		</button>
+	{/if}
 	<input {min} {max} {step} type="number" {placeholder} bind:value/>
-	<button type="button" on:click={() => value -= stepNum}>
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
-		</svg>
-	</button>
+	{#if !no_controls}
+		<button type="button" on:click={() => inc(-stepNum)}>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+			</svg>
+		</button>
+	{/if}
 </div>
 
 <style lang="scss">
-	.number-input {
+	.number_input {
 		width: fit-content;
 		color: var(--color-primary);
 		height: 40px;
 		display: inline-flex;
 		position: relative;
 		font-size: 14px;
+		transition: box-shadow .5s;
 		background: var(--background-secondary);
 		font-weight: 500;
 		font-family: var(--font-primary);
 		border-radius: 20px;
+		&.no_controls {
+			box-shadow: inset 0 0 0 1px var(--border-primary);
+			&:hover {
+				box-shadow: inset 0 0 0 1px var(--border-secondary);
+			}
+			input {
+				min-width: 192px;
+				clip-path: none;
+				box-shadow: none;
+				text-align: unset;
+				&:hover {
+					box-shadow: none;
+				}
+			}
+		}
 		&::placeholder {
 			color: var(--color-tertiary);
 		}
@@ -94,7 +116,7 @@
 			}
 		}
 		&:has(input:focus) {
-			animation: 1s infinite alternate basic-focus;
+			animation: forwards awesome_focus ease-out .25s;
 		}
 	}
 </style>

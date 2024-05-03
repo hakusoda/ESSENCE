@@ -16,18 +16,18 @@
 	font-family: var(--font-primary);
 }
 
-.focusable {
+.focusable, .menu_content .search {
 	outline: none;
 	&:focus {
-		animation: 1s infinite alternate basic-focus;
+		animation: forwards awesome_focus ease-out .25s;
 	}
 }
 
-@keyframes basic-focus {
+@keyframes awesome_focus {
 	0% {
-		box-shadow: 0 0 0 2px var(--border-tertiary);
+		box-shadow: 0 0 0 32px transparent;
 	}
 	100% {
-		box-shadow: 0 0 0 2px var(--border-secondary);
+		box-shadow: 0 0 0 2px hsla(260, 80%, 80%, .75);
 	}
 }

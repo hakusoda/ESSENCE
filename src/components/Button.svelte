@@ -22,7 +22,6 @@
 		'button',
 		`button--size-${size}`,
 		`button--colour-${colour}`,
-		'focusable',
 		(circle && 'button--circle') as string
 	]);
 

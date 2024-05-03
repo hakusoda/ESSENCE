@@ -28,10 +28,10 @@
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.5.7",
 		"@sveltejs/package": "^2.3.1",
-		"sass": "^1.75.0",
+		"sass": "^1.76.0",
 		"svelte-preprocess": "^5.1.4",
 		"typescript": "^5.4.5",
-		"vite": "^5.2.10"
+		"vite": "^5.2.11"
 	},
 	"dependencies": {
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",

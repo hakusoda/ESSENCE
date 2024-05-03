@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let type: 'text' | 'email' | 'number' | 'password' | 'tel' | 'url' = 'text';
-	export let value = '';
+	export let value: string | null | undefined = '';
 	export let multiline = false;
 	export let placeholder = '';
 	
